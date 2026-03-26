@@ -1,0 +1,45 @@
+# IDE / editor (keep editor sockets and machine metadata out of EAS upload)
+.vscode/
+**/.vscode/**
+.cursor/
+**/.cursor/**
+.idea/
+**/.idea/**
+*.code-workspace
+
+# Sockets & local IPC (Cursor / VS Code remote / dev servers)
+**/*.sock
+**/vscode-ipc-*
+**/.cursor-*
+**/cursor-*.sock
+
+# Logs & diagnostics (no device or host metadata in archive)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.metro-health-check*
+
+# Build outputs & caches (not needed on EAS workers)
+dist/
+web-build/
+.expo/
+coverage/
+tmp/
+temp/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Git (EAS clones from VCS; this avoids nested .git blobs if present)
+.git/
+
+# Native folders if accidentally committed locally (EAS runs prebuild)
+android/
+ios/
+
+# Optional local secrets
+.env
+.env.*
+!.env.example
