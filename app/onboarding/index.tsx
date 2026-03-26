@@ -3,7 +3,18 @@ import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import { useMemo, useRef, useState } from 'react';
-import { FlatList, NativeScrollEvent, NativeSyntheticEvent, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import {
+  Alert,
+  FlatList,
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  Pressable,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View,
+} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Animated, {
   Extrapolation,
   interpolate,
@@ -16,6 +27,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import type { AppImageKey } from '@/constants/appImages';
 import { getAppImage } from '@/constants/appImages';
 import { COMPANY } from '@/constants/company';
+import { ONBOARDING_COMPLETE_KEY } from '@/constants/onboardingStorage';
 import { Colors, Fonts, Palette, Radius, Spacing } from '@/constants/theme';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 import * as Haptics from 'expo-haptics';
@@ -81,9 +93,17 @@ export default function OnboardingScreen() {
     scrollX.value = e.nativeEvent.contentOffset.x;
   };
 
-  const finish = () => {
+  const finish = async () => {
     Haptics.notificationAsync(Haptics.NotificationFeedbackType.Success).catch(() => {});
-    router.replace('/(drawer)/(tabs)');
+    try {
+      await AsyncStorage.setItem(ONBOARDING_COMPLETE_KEY, '1');
+      router.replace('/(drawer)/(tabs)');
+    } catch {
+      Alert.alert(
+        'Could not continue',
+        'We could not save your preference on this device. Please try again, or restart the app.'
+      );
+    }
   };
 
   const next = () => {

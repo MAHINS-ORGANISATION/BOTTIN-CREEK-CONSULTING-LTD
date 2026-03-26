@@ -12,18 +12,18 @@ export default function PrivacyScreen() {
   return (
     <SubScreenChrome title="Privacy policy">
       <ScrollView
-        contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.xxl }]}
+        contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.lg }]}
         showsVerticalScrollIndicator={false}>
         <Text style={[styles.p, { color: c.textSecondary }]}>
           Last updated: March 26, 2026. This notice describes how the {COMPANY.appName} mobile experience treats
           information when you use it on your device.
         </Text>
-        <Text style={[styles.h, { color: c.text }]}>No data collection or storage</Text>
+        <Text style={[styles.h, { color: c.text }]}>What stays on your device</Text>
         <Text style={[styles.p, { color: c.textSecondary }]}>
-          {COMPANY.appName} does not request runtime permissions on Android, does not use persistent local storage for your
-          profile, theme, or onboarding state, and does not send your inputs to {COMPANY.legalName}’s servers. Profile and
-          order details you enter exist only in the app’s memory for the current session and are cleared when the app
-          process ends.
+          {COMPANY.appName} does not request runtime permissions on Android and does not send your inputs to{' '}
+          {COMPANY.legalName}’s servers. A single on-device flag may be stored so the intro walkthrough is not shown again
+          after you finish it. Your profile, theme choice, and cart are not written to persistent storage by the app;
+          they exist in memory for the current session and are cleared when the app process ends.
         </Text>
         <Text style={[styles.h, { color: c.text }]}>Orders & PDFs</Text>
         <Text style={[styles.p, { color: c.textSecondary }]}>

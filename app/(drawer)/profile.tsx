@@ -1,5 +1,4 @@
 import { Alert, Keyboard, Platform, Pressable, ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { SubScreenChrome } from '@/components/SubScreenChrome';
 import { COMPANY } from '@/constants/company';
@@ -14,7 +13,6 @@ const EMOJI_OPTIONS = ['👤', '🧑‍💼', '👨‍💼', '👩‍💼', '�
 export default function ProfileScreen() {
   const scheme = useColorScheme() ?? 'light';
   const c = Colors[scheme];
-  const insets = useSafeAreaInsets();
   const { profile, saveProfile, deleteProfile } = useProfile();
   const [keyboardBottomPad, setKeyboardBottomPad] = useState(0);
 
@@ -90,7 +88,7 @@ export default function ProfileScreen() {
     );
   };
 
-  const scrollBottomPad = Spacing.xxl + insets.bottom + keyboardBottomPad;
+  const scrollBottomPad = Spacing.lg + keyboardBottomPad;
 
   return (
     <SubScreenChrome title="Profile">

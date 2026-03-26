@@ -100,7 +100,7 @@ export default function BlogTab() {
                 <View style={{ width: 40 }} />
               </View>
               <ScrollView
-                contentContainerStyle={{ paddingBottom: Spacing.xxl + insets.bottom }}
+                contentContainerStyle={{ paddingBottom: Spacing.lg + insets.bottom }}
                 showsVerticalScrollIndicator={false}>
                 <Image source={getAppImage(open.imageKey)} style={styles.modalHero} contentFit="cover" />
                 <View style={{ padding: Spacing.md, gap: Spacing.md }}>

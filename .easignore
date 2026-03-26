@@ -1,11 +1,15 @@
-# IDE / editor (keep editor sockets and machine metadata out of EAS upload)
+# Exclude IDE state, sockets, logs, and local diagnostics from EAS upload tarballs.
+
+# IDE / editor
 .vscode/
 **/.vscode/**
 .cursor/
 **/.cursor/**
 .idea/
 **/.idea/**
+.fleet/
 *.code-workspace
+*.iml
 
 # Sockets & local IPC (Cursor / VS Code remote / dev servers)
 **/*.sock
@@ -13,33 +17,49 @@
 **/.cursor-*
 **/cursor-*.sock
 
-# Logs & diagnostics (no device or host metadata in archive)
+# Logs & diagnostics (may reference host, user, or device)
 *.log
+*.log.*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .metro-health-check*
+firebase-debug.log
+firestore-debug.log
 
-# Build outputs & caches (not needed on EAS workers)
+# Profiling / heap / traces
+*.hprof
+*.trace
+*.cpuprofile
+
+# Build outputs & caches (EAS workers regenerate as needed)
 dist/
 web-build/
 .expo/
 coverage/
 tmp/
 temp/
+.turbo/
 
 # OS junk
 .DS_Store
 Thumbs.db
+Desktop.ini
 
-# Git (EAS clones from VCS; this avoids nested .git blobs if present)
+# Nested git metadata (EAS normally uses a clean export)
 .git/
 
-# Native folders if accidentally committed locally (EAS runs prebuild)
+# Local native trees (EAS runs prebuild)
 android/
 ios/
 
-# Optional local secrets
+# Local env & secrets
 .env
 .env.*
 !.env.example
+keystore.properties
+**/keystore.properties
+
+# Xcode user state
+**/xcuserdata/
+**/*.xcuserstate

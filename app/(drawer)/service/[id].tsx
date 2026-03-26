@@ -42,7 +42,7 @@ export default function ServiceDetailScreen() {
 
   return (
     <SubScreenChrome title="Service details">
-      <ScrollView contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.xxl }]}>
+      <ScrollView contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.lg }]}>
         <View style={styles.hero}>
           <Image source={getAppImage(service.imageKey)} style={StyleSheet.absoluteFill} contentFit="cover" />
           <LinearGradient

@@ -1,4 +1,5 @@
 # Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# Goal: keep device diagnostics, IDE state, and machine-specific paths out of version control.
 
 # Dependencies
 node_modules/
@@ -16,34 +17,56 @@ expo-env.d.ts
 /android
 .kotlin/
 
-# IDE / editor — avoid committing machine-specific or socket-related paths
+# IDE / editor — machine metadata, sockets, workspace state
 .vscode/
 .idea/
 .cursor/
-**/*.code-workspace
+**/.cursor/**
+**/.vscode/**
+.fleet/
+*.code-workspace
+*.iml
 **/*.sock
+**/vscode-ipc-*
+**/.cursor-*
+**/cursor-*.sock
 
-# Logs & debug artifacts
+# Logs & debug / diagnostic output (may reference paths, hosts, or devices)
 *.log
+*.log.*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 .metro-health-check*
+firebase-debug.log
+firestore-debug.log
 
-# Keys & signing (never commit)
+# Profiling / heap / traces (can embed host or session metadata)
+*.hprof
+*.trace
+*.cpuprofile
+
+# Keys & signing (never commit — do not push to GitHub)
 *.orig.*
 *.jks
+*.jks.zip
+**/*jks*.zip
+*.keystore
 *.p8
 *.p12
 *.key
 *.mobileprovision
 *.pem
+keystore.properties
+**/keystore.properties
 
 # macOS / Windows
 .DS_Store
 Thumbs.db
+Desktop.ini
 
-# Local env
+# Local env (may contain tokens or machine-specific URLs)
 .env
 .env*.local
 !.env.example
@@ -56,3 +79,19 @@ app-example
 # EAS local credentials (if used)
 credentials.json
 credentials/
+
+# Xcode user state (if native project ever present locally)
+**/xcuserdata/
+**/*.xcuserstate
+**/DerivedData/
+
+# Fastlane local reports
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# Editor backups
+*~
+*.swp
+*.swo

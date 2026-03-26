@@ -70,11 +70,7 @@ const config = {
   extra: {
     router: {},
     eas: {
-      /**
-       * Set by `eas init` or when building:
-       *   EAS_PROJECT_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx eas build ...
-       */
-      projectId: process.env.EAS_PROJECT_ID,
+      projectId: '95413f10-48f2-44b1-a7bc-74ad9de1c8b9',
     },
   },
 };

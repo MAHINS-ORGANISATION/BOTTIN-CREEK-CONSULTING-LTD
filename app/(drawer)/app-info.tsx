@@ -18,7 +18,7 @@ export default function AppInfoScreen() {
   return (
     <SubScreenChrome title="App info">
       <ScrollView
-        contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.xxl }]}
+        contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.lg }]}
         showsVerticalScrollIndicator={false}>
         <View style={[styles.hero, { backgroundColor: c.card, borderColor: c.border }]}>
           <View style={[styles.logoFrame, { borderColor: Palette.brass }]}>

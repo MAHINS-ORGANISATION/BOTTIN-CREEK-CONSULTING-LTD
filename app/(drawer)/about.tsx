@@ -16,7 +16,7 @@ export default function AboutDrawerScreen() {
   return (
     <SubScreenChrome title="About the firm">
       <ScrollView
-        contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.xxl }]}
+        contentContainerStyle={[styles.scroll, { paddingBottom: Spacing.lg }]}
         showsVerticalScrollIndicator={false}>
         <Animated.View entering={FadeInUp.duration(500)}>
           <View style={styles.hero}>

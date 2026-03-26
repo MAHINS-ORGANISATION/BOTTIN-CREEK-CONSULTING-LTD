@@ -1,9 +1,9 @@
-import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
-
 import { Spacing } from '@/constants/theme';
 
-/** Bottom padding for tab screens so scroll content clears the tab bar (and system gesture area). */
-export function useTabScrollPaddingBottom(extra = Spacing.xxl) {
-  const tabBarHeight = useBottomTabBarHeight();
-  return extra + tabBarHeight;
+/**
+ * Bottom padding for tab scroll content. The tab navigator lays out the scene above the tab bar,
+ * so we only add a small inset so the last item is not flush against the layout edge.
+ */
+export function useTabScrollPaddingBottom() {
+  return Spacing.lg;
 }

@@ -80,7 +80,7 @@ export function CustomDrawerContent(props: DrawerContentComponentProps) {
       </View>
 
       <ScrollView
-        contentContainerStyle={[styles.list, { paddingBottom: insets.bottom + Spacing.lg }]}
+        contentContainerStyle={[styles.list, { paddingBottom: insets.bottom + Spacing.md }]}
         showsVerticalScrollIndicator={false}>
         {ITEMS.map((item) => (
           <Pressable

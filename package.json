@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "expo": {
     "install": {
-      "exclude": ["@react-navigation/drawer"]
+      "exclude": [
+        "@react-navigation/drawer"
+      ]
     }
   },
   "scripts": {
@@ -15,12 +17,14 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "verify-assets": "node scripts/check-app-images.mjs",
-    "eas:android:aab": "eas build --platform android --profile production"
+    "eas:android:aab": "eas build --platform android --profile production",
+    "store:docx": "python3 scripts/build-store-docx.py"
   },
   "dependencies": {
     "@expo-google-fonts/cormorant-garamond": "^0.4.1",
     "@expo-google-fonts/dm-sans": "^0.4.2",
     "@expo/vector-icons": "^15.0.3",
+    "@react-native-async-storage/async-storage": "2.2.0",
     "@react-navigation/bottom-tabs": "^7.4.0",
     "@react-navigation/drawer": "^7.9.6",
     "@react-navigation/elements": "^2.6.3",
