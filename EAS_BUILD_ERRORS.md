@@ -1,5 +1,25 @@
 # EAS Build Errors & Solutions
 
+## Project status (Bottin Consult)
+
+The items below are **implemented in this repo** unless noted:
+
+| Topic | What we did |
+|--------|----------------|
+| App / package | **Bottin Consult** · Android `com.bottincreekconsultingltd.bottinconsult` · iOS bundle ID matches (adjust in `app.config.js` if Apple needs a different id). |
+| SDK 35 | `expo-build-properties`: `compileSdkVersion` / `targetSdkVersion` **35**, `buildToolsVersion` **35.0.0**. |
+| R8 / shrink | `enableMinifyInReleaseBuilds` + `enableShrinkResourcesInReleaseBuilds` **true**; extra rules in root **`proguard-rules.pro`**. |
+| Release defaults | EAS **production** uses Android **`app-bundle`** (AAB). Gradle **release** builds are non-debuggable by default. |
+| Path aliases `@/` | `babel-plugin-module-resolver` + `tsconfig` **`baseUrl`** + Expo **`experiments.tsconfigPaths`**. |
+| `expo-build-properties` | In **`dependencies`** (not devDependencies). |
+| Version source | **`eas.json`** → `cli.appVersionSource`: **`local`**; bump `expo.version` / `android.versionCode` in **`app.config.js`** for releases. |
+| NODE_ENV | No `env.NODE_ENV` override in **`eas.json`** profiles. |
+| EAS archive hygiene | **`.easignore`** excludes `.vscode/`, `.cursor/`, `*.sock`, logs, `dist/`, `.expo/`, local `android/`/`ios/`, `.git/`. |
+| Git | **Dedicated repo** under `bottin-consult/` with branch **`main`**, initial commit applied. |
+| EAS project id | Run **`eas login`** then **`eas init`** once; that writes **`extra.eas.projectId`** into **`app.config.js`**. Until then you can set **`EAS_PROJECT_ID`** in the environment when invoking `eas build`. |
+
+---
+
 This document lists the errors encountered during the EAS build process and their solutions.
 
 ## 1. EAS Credentials Permission Error

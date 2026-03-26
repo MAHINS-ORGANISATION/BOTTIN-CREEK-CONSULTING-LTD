@@ -14,7 +14,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "verify-assets": "node scripts/check-app-images.mjs"
+    "verify-assets": "node scripts/check-app-images.mjs",
+    "eas:android:aab": "eas build --platform android --profile production"
   },
   "dependencies": {
     "@expo-google-fonts/cormorant-garamond": "^0.4.1",
